@@ -4,4 +4,4 @@
 #
 # License: LGPL-3.0
 
-import diep-X
+import diepX
