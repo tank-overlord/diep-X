@@ -35,7 +35,7 @@ Execute
 
 .. code-block::
 
-   python -m diepX  # notice it's case-sensitive
+   python -m diepX   
 
 
 Have fun!!!
