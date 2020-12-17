@@ -5,14 +5,14 @@
 .. |PythonVersion| image:: https://img.shields.io/badge/python-3.6%20%7C%203.7%20%7C%203.8-blue
 .. _PythonVersion: https://img.shields.io/badge/python-3.6%20%7C%203.7%20%7C%203.8-blue
 
-.. |PyPi_version| image:: https://img.shields.io/pypi/v/diepX
-.. _PyPi_version: https://pypi.python.org/pypi/diepX
+.. |PyPi_version| image:: https://img.shields.io/pypi/v/diep-X
+.. _PyPi_version: https://pypi.python.org/pypi/diep-X
 
-.. |Downloads| image:: https://pepy.tech/badge/diepX
-.. _Downloads: https://pepy.tech/project/diepX
+.. |Downloads| image:: https://pepy.tech/badge/diep-X
+.. _Downloads: https://pepy.tech/project/diep-X
 
-.. |License| image:: https://img.shields.io/pypi/l/diepX
-.. _License: https://pypi.python.org/pypi/diepX
+.. |License| image:: https://img.shields.io/pypi/l/diep-X
+.. _License: https://pypi.python.org/pypi/diep-X
 
 
 =========================
@@ -24,7 +24,7 @@ Install
 
 .. code-block::
 
-   pip install diepX
+   pip install diep-X
 
 
 Execute
@@ -32,7 +32,7 @@ Execute
 
 .. code-block::
 
-   python -m diepX
+   python -m diep-X
 
 
 Have fun!!!
@@ -42,4 +42,4 @@ Have fun!!!
 |image_screenshot|
    
 
-.. |image_screenshot| image:: https://github.com/tank-overlord/diepX/raw/master/example/screenshot.png
+.. |image_screenshot| image:: https://github.com/tank-overlord/diep-X/raw/master/example/screenshot.png

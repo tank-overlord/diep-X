@@ -16,7 +16,7 @@ with open("requirements.txt") as fh:
     required = fh.read().splitlines()
 
 setuptools.setup(
-    name="diepX",
+    name="diep-X",
     version=diepX.__version__,
     author="Tank Overlord",
     author_email="TankOverLord88@gmail.com",
@@ -24,7 +24,7 @@ setuptools.setup(
     license="LGPL-3.0",
     long_description=long_description,
     long_description_content_type="text/x-rst",
-    url="https://github.com/tank-overlord/diepX",
+    url="https://github.com/tank-overlord/diep-X",
     packages=setuptools.find_packages(),
     classifiers=[  # https://pypi.org/classifiers/
         "Topic :: Games/Entertainment",
