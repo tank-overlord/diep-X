@@ -19,11 +19,12 @@ setuptools.setup(
     name="diepX",
     version=diepX.__version__,
     author="Tank Overlord",
-    author_email="OverLordTank88@gmail.com",
+    author_email="TankOverLord88@gmail.com",
     description="A mini tank-shooting game",
     license="LGPL-3.0",
     long_description=long_description,
     long_description_content_type="text/x-rst",
+    url="https://github.com/tank-overlord/diepX",
     packages=setuptools.find_packages(),
     classifiers=[  # https://pypi.org/classifiers/
         "Topic :: Games/Entertainment",
