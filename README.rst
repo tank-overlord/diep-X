@@ -35,6 +35,9 @@ Execute
    python -m diepX
 
 
+Have fun!!!
+
+
 |image_screenshot|
    
 
