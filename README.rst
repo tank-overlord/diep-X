@@ -39,4 +39,3 @@ Execute
    
 
 .. |image_screenshot| image:: https://github.com/tank-overlord/diepX/raw/master/example/screenshot.png
-   :width: 800px
