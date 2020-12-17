@@ -32,7 +32,7 @@ Execute
 
 .. code-block::
 
-   python -m diep-X
+   python -m diepX
 
 
 Have fun!!!
