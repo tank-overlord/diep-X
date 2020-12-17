@@ -33,3 +33,10 @@ Execute
 .. code-block::
 
    python -m diepX
+
+
+|image_screenshot|
+   
+
+.. |image_screenshot| image:: https://github.com/tank-overlord/diepX/raw/master/example/screenshot.png
+   :width: 800px
