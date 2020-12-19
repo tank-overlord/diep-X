@@ -38,6 +38,10 @@ Execute
    python -m diepX   
 
 
+Keys: 'W','A','S','D' or arrow keys to move. Mouse click to make single shot. Space bar to make continuous shots.
+
+Comments or questions please send to the author: TankOverLord88@gmail.com
+
 Have fun!!!
 -----------
 
