@@ -78,6 +78,24 @@ class shape(object):
         # respawn variables
         self.visible = True
         self.birth_time = time.time()
+        # chasing tank?
+        self.chasing_tank = False
+        self.chasing_speed = random.randint(1,5)
+
+    def chase_tank(self, tank):
+        #distance = math.sqrt((tank.rect.centerx - self.rect.centerx)**2, (tank.rect.centery - self.rect.centery)**2)
+        if not tank.visible:
+            return
+
+        if (tank.rect.centerx - self.rect.centerx) > self.chasing_speed:
+            self.rect.centerx += self.chasing_speed
+        else:
+            self.rect.centerx -= self.chasing_speed
+
+        if (tank.rect.centery - self.rect.centery) > self.chasing_speed:
+            self.rect.centery += self.chasing_speed
+        else:
+            self.rect.centery -= self.chasing_speed
 
     def set_surf_rect(self, scale_factor=1.1):
         self.surf_width = self.r*2*scale_factor
@@ -163,6 +181,7 @@ class pentagon(shape):
         # color
         self.fg_color = Color(114, 137, 244)
         # combat variables
+        self.health = 100
         self.reward_points = 150
 
     def set_points(self, angle=None):
@@ -191,6 +210,9 @@ class crasher(triangle):
         self.fg_color = Color(233, 115, 214)
         # combat variables
         self.reward_points = 0
+        # chasing tank?
+        self.chasing_tank = True
+        self.chasing_speed =1
 
 
 class tank(shape):
@@ -508,6 +530,8 @@ def diepX():
                     screen.blit(this_bullet.surf, this_bullet.rect)
 
         for this_shape in shape_instances:
+            if this_shape.chasing_tank:
+                this_shape.chase_tank(tank_player1)
             this_shape.draw(angle=angle)
             if this_shape.visible:
                 screen.blit(this_shape.surf, this_shape.rect)  # blit = Block Transfer
