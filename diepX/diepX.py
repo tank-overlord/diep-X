@@ -49,6 +49,7 @@ class bg_grid(object):
 class shape(object):
     def __init__(self, center_x=None, center_y=None, side_len=30, side_len_scale_factor=1.0, spin_speed=None, screen_margin=60, *args, **kwargs):
         super().__init__(*args, **kwargs)
+        self.side_len_scale_factor = side_len_scale_factor
         self.screen_margin = screen_margin
         self.center_x = center_x
         if self.center_x is None:
@@ -56,7 +57,7 @@ class shape(object):
         self.center_y = center_y
         if self.center_y is None:
             self.center_y = random.randint(self.screen_margin, SCREEN_HEIGHT-self.screen_margin)
-        self.side_len = side_len * side_len_scale_factor
+        self.side_len = side_len * self.side_len_scale_factor
         self.bg_color = Color(0, 0, 0, 0) # transparent
         # place holder
         self.fg_color = None
@@ -80,22 +81,30 @@ class shape(object):
         self.birth_time = time.time()
         # chasing tank?
         self.chasing_tank = False
-        self.chasing_speed = random.randint(1,5)
+        self.tank_rect_center = None
+        self.chasing_speed = 2 # random.randint(1,3)
 
     def chase_tank(self, tank):
         #distance = math.sqrt((tank.rect.centerx - self.rect.centerx)**2, (tank.rect.centery - self.rect.centery)**2)
         if not tank.visible:
             return
 
-        if (tank.rect.centerx - self.rect.centerx) > self.chasing_speed:
-            self.rect.centerx += self.chasing_speed
-        else:
-            self.rect.centerx -= self.chasing_speed
+        tank_rect_center = pygame.Vector2((tank.rect.centerx, tank.rect.centery))
+        self.rect_center = pygame.Vector2((self.rect.centerx, self.rect.centery))
+        if tank_rect_center.distance_to(self.rect_center) < self.chasing_speed:
+            return
+        ###########################################
+        if (self.tank_rect_center is None) or (self.tank_rect_center != tank_rect_center):
+            self.rect_original = self.rect
+            self.tank_rect_center = tank_rect_center
+            direction = self.tank_rect_center - self.rect_center
+            self.chasing_angle = atan_deg(direction[1], direction[0])
+            self.total_steps = self.chasing_speed
 
-        if (tank.rect.centery - self.rect.centery) > self.chasing_speed:
-            self.rect.centery += self.chasing_speed
-        else:
-            self.rect.centery -= self.chasing_speed
+        # chasing
+        self.total_steps += self.chasing_speed
+        self.rect = self.rect_original.move(self.total_steps * cos_deg(self.chasing_angle), self.total_steps * sin_deg(self.chasing_angle))
+
 
     def set_surf_rect(self, scale_factor=1.1):
         self.surf_width = self.r*2*scale_factor
@@ -308,7 +317,7 @@ class tank(shape):
     def shoot(self):
         if not self.visible:
             return
-        self.bullets.append(bullet(side_len=10, initial_angle=self.initial_angle + random.randint(-2, 2)))
+        self.bullets.append(bullet(side_len=6.666667*self.side_len_scale_factor, initial_angle=self.initial_angle + random.randint(-2, 2)))
         self.bullets[-1].rect.centerx, self.bullets[-1].rect.centery = self.rect.centerx, self.rect.centery
         self.bullets[-1].move(incremental_steps=40)
         # recoil
