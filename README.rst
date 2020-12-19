@@ -44,7 +44,7 @@ Controls
 .. code-block::
 
    Keys: 'W','A','S','D' or arrow keys to move. 
-   Mouse click to make single shot. Space bar to make continuous shots.
+   Mouse click to shoot one bullet. Hold down space bar to shoot bullets continuously.
    Comments or questions please send to TankOverLord88@gmail.com
 
 
