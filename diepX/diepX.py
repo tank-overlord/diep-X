@@ -362,20 +362,30 @@ def diepX():
 
     pygame.mixer.init() # sound setup using defaults
     # background music
+
+    # Sound source: http://ccmixter.org/files/Apoxode/59262
+    # License: https://creativecommons.org/licenses/by/3.0/
     pygame.mixer.music.load("bkg.mp3") # Apoxode_-_Electric_1.mp3
     pygame.mixer.music.play(loops=-1)
 
     global shoot_sound
     global bullet_hit_sound
     global enemydown_sound
-    
+
+    # https://freesound.org/people/Davidsraba/sounds/347171/
+    # License: http://creativecommons.org/publicdomain/zero/1.0/
     shoot_sound = pygame.mixer.Sound("shooting.ogg")
-    shoot_sound.set_volume(0.5)
 
+    # https://freesound.org/people/qubodup/sounds/211634/
+    # License: http://creativecommons.org/licenses/by/3.0/
     bullet_hit_sound = pygame.mixer.Sound("hit.ogg")
-    bullet_hit_sound.set_volume(0.5)
 
+    # https://freesound.org/people/qubodup/sounds/171971/
+    # License: http://creativecommons.org/publicdomain/zero/1.0/
     enemydown_sound = pygame.mixer.Sound("explosion.ogg")
+
+    shoot_sound.set_volume(0.5)
+    bullet_hit_sound.set_volume(0.5)
     enemydown_sound.set_volume(0.5)
 
     pygame.init()
