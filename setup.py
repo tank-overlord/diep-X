@@ -2,7 +2,7 @@
 
 # Author: Tank Overlord <TankOverLord88@gmail.com>
 #
-# License: LGPL-3.0
+# License: BSD 3-Clause
 
 
 import setuptools
@@ -21,7 +21,7 @@ setuptools.setup(
     author="Tank Overlord",
     author_email="TankOverLord88@gmail.com",
     description="A mini tank-shooting game",
-    license="LGPL-3.0",
+    license="BSD 3-Clause",
     long_description=long_description,
     long_description_content_type="text/x-rst",
     url="https://github.com/tank-overlord/diep-X",
@@ -32,7 +32,7 @@ setuptools.setup(
         "Programming Language :: Python :: 3.6",
         "Programming Language :: Python :: 3.7",
         "Programming Language :: Python :: 3.8",
-        "License :: OSI Approved :: GNU Lesser General Public License v3 (LGPLv3)",
+        "License :: OSI Approved :: BSD License",
         "Development Status :: 3 - Alpha",
         "Operating System :: OS Independent",
     ],

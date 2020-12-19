@@ -2,6 +2,6 @@
 
 # Author: Tank Overlord <TankOverLord88@gmail.com>
 #
-# License: LGPL-3.0
+# License: BSD 3-Clause
 
 import diepX
