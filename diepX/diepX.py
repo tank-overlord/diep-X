@@ -16,6 +16,8 @@ import math
 import pathlib
 import os
 
+streamliner = False
+
 def sin_deg(deg):
     return math.sin(deg/180*math.pi)
 
@@ -287,8 +289,10 @@ class tank(shape):
     def move(self, pressed_keys=None):
 
         if pressed_keys is not None:
-            if pressed_keys[K_SPACE]:
-                self.shoot()
+            global streamliner
+            if streamliner:
+                if pressed_keys[K_SPACE]:
+                    self.shoot()
             if pressed_keys[K_UP] or pressed_keys[K_w]:
                 self.rect.move_ip(0, -self.tank_move_distance)
             if pressed_keys[K_DOWN] or pressed_keys[K_s]:
@@ -298,15 +302,18 @@ class tank(shape):
             if pressed_keys[K_RIGHT] or pressed_keys[K_d]:
                 self.rect.move_ip(self.tank_move_distance, 0)
 
-        # Keep player on the screen
+        # Keep player on the virtual screen
         if self.rect.left < 0:
             self.rect.left = 0
-        elif self.rect.right > SCREEN_WIDTH:
-            self.rect.right = SCREEN_WIDTH
+        elif self.rect.right > VIRTUAL_SCREEN_WIDTH:
+            self.rect.right = VIRTUAL_SCREEN_WIDTH
         if self.rect.top <= 0:
             self.rect.top = 0
-        elif self.rect.bottom >= SCREEN_HEIGHT:
-            self.rect.bottom = SCREEN_HEIGHT
+        elif self.rect.bottom >= VIRTUAL_SCREEN_HEIGHT:
+            self.rect.bottom = VIRTUAL_SCREEN_HEIGHT
+
+        # Move the Field of View
+        
 
     def face(self, mouse_pos):
         self.rect_center = pygame.Vector2((self.rect.centerx, self.rect.centery))
@@ -421,6 +428,8 @@ def diepX():
 
     global SCREEN_WIDTH
     global SCREEN_HEIGHT
+    global VIRTUAL_SCREEN_WIDTH
+    global VIRTUAL_SCREEN_HEIGHT
 
     SCREEN_WIDTH = 1800
     SCREEN_HEIGHT = 900
@@ -428,6 +437,10 @@ def diepX():
     screen = pygame.display.set_mode((SCREEN_WIDTH,SCREEN_HEIGHT),FULLSCREEN)
     screen_rect = screen.get_rect()
     SCREEN_WIDTH, SCREEN_HEIGHT = pygame.display.get_surface().get_size()
+
+    screen_size_factor = 2
+    VIRTUAL_SCREEN_WIDTH = SCREEN_WIDTH * screen_size_factor
+    VIRTUAL_SCREEN_HEIGHT = SCREEN_HEIGHT * screen_size_factor
 
     angle = 0
     rotation_speed = 1
@@ -571,8 +584,10 @@ def diepX():
             if event.type == KEYDOWN:
                 if event.key == K_ESCAPE:
                     running = False
-                #if event.key == K_SPACE:
-                #    tank_player1.shoot()
+                global streamliner
+                if not streamliner:
+                    if event.key == K_SPACE:
+                        tank_player1.shoot()
             elif event.type == QUIT: # windows close button
                 running = False
             elif event.type == MOUSEBUTTONDOWN:
